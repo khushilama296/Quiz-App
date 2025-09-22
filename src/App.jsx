@@ -21,17 +21,17 @@ function App() {
       setScore((prevScore) => prevScore + 1);
       setFeedback('〇');
     } else {
-      setFeedback('✕');
+      setFeedback('×');
     }
-    setAnswers([...answer, newAnswer]);
-    console.log(answer)
+    setAnswers([...answers, newAnswer]);
+    console.log(answers)
   setNext(true);
   }
   const goToNextQuestion = () => {
-    const nextQuestion = currentQuestion + 1
+    const goToNextQuestion = currentQuestion + 1
 
-    if (nextQuestion   < quizData.length){
-      setCurrentQuestion(nextQuestion);
+    if (goToNextQuestion   < quizData.length){
+      setCurrentQuestion(goToNextQuestion);
     } else {
       setShowScore(true);
     }
@@ -40,22 +40,22 @@ function App() {
     
   return (
     <div className="quiz-container">
-      { showScore ? (
+      { showScore ?(
         <div className='score-section'>
           <h1>スコア</h1>
           <h2>{score}/{quizData.length}</h2>
           <table className='answer-table'>
             <thead>
               <tr>
-                <td>質問</td> <td>あなたの解答</td> <td>合否</td>
+                <td>質問</td> <td>あなたの回答</td> <td>合否</td>
               </tr>
             </thead>
             <tbody>
-              {answers.map((item)=>(
+              {answers.map((item)=> (
                 <tr className={item.correct ? 'correct' : 'wrong'}>
                   <td>{item.question}</td>
                   <td>{item.answer}</td>
-                  <td>{item.correct ? '〇' : '✕'}</td>
+                  <td>{item.correct ? '〇' : '×'}</td>
                 </tr>
               ))}
             </tbody>
